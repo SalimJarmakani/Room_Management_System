@@ -23,6 +23,12 @@
                     <x-nav-link :href="route('rooms.calendar')" :active="request()->routeIs('/calendar')">
                         {{ __('Calendar') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('rooms.create')" :active="request()->routeIs('/create')">
+                        {{ __('Create Room') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('rooms.search')" :active="request()->routeIs('/search')">
+                        {{ __('Search Rooms') }}
+                    </x-nav-link>
                 </div>
             </div>
 

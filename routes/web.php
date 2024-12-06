@@ -24,7 +24,13 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->prefix('rooms')->group(function () {
     Route::get('/', [RoomController::class, 'index'])->name('rooms.index');
     Route::get('/calendar', [RoomController::class, 'showCalendar'])->name('rooms.calendar');
+    Route::get('/create', [RoomController::class, 'create'])->name('rooms.create');
+    Route::post('/', [RoomController::class, 'store'])->name('rooms.store');
+    Route::get('/search', [RoomController::class, 'search'])->name('rooms.search');
 });
 
-Route::get('/book-room', [BookingController::class, 'showBookingForm'])->name('book-room.form');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/book-room', [BookingController::class, 'showBookingForm'])->name('book-room.form');
+    Route::post('/book-room', [BookingController::class, 'store'])->name('book-room.store');
+});
 require __DIR__ . '/auth.php';

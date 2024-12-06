@@ -1,51 +1,32 @@
 <x-app-layout>
-    <div class="container mx-auto p-6">
-        <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Book a Room</h2>
+    <div class="container mx-auto p-6 bg-white mt-5 w-5/12 rounded">
 
-            <!-- Display success message if booking is successful -->
-            @if (session('success'))
-            <div class="mb-4 text-green-500">{{ session('success') }}</div>
-            @endif
-
-            <!-- Booking Form -->
-            <form method="POST">
-                @csrf
-
-                <!-- Start Time -->
-                <div class="mb-4">
-                    <label for="start_time" class="block text-sm font-medium text-gray-700">Start Time</label>
-                    <input type="datetime-local" id="start_time" name="start_time" class="mt-1 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
-                    @error('start_time')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <!-- End Time -->
-                <div class="mb-4">
-                    <label for="end_time" class="block text-sm font-medium text-gray-700">End Time</label>
-                    <input type="datetime-local" id="end_time" name="end_time" class="mt-1 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
-                    @error('end_time')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <!-- Reason -->
-                <div class="mb-4">
-                    <label for="reason" class="block text-sm font-medium text-gray-700">Reason</label>
-                    <textarea id="reason" name="reason" rows="4" class="mt-1 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter the reason for booking the room" required></textarea>
-                    @error('reason')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <!-- Submit Button -->
-                <div class="mt-6">
-                    <button type="submit" class="w-full px-4 py-2 bg-blue-700 text-white text-lg font-semibold rounded-lg hover:bg-blue-800 focus:outline-none">
-                        Book Room
-                    </button>
-                </div>
-            </form>
+        @if ($errors->has('error'))
+        <div class="bg-red-500 text-white p-4 rounded-lg mb-4">
+            {{ $errors->first('error') }}
         </div>
+        @endif
+        <h1 class="text-2xl font-bold mb-4">Book <span class="text-blue-600">{{$room_name}}</span></h1>
+        <form method="POST" action="{{ route('book-room.store') }}" class="space-y-4">
+            @csrf
+
+            <input type="hidden" name="room_id" value="{{ $room_id }}">
+
+            <div>
+                <label for="start_time" class="block text-gray-700">Start Time</label>
+                <input type="datetime-local" name="start_time" id="start_time" required
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+
+            <div>
+                <label for="end_time" class="block text-gray-700">End Time</label>
+                <input type="datetime-local" name="end_time" id="end_time" required
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+
+            <button type="submit" class="bg-blue-700 text-white py-2 px-4 rounded">
+                Confirm Booking
+            </button>
+        </form>
     </div>
 </x-app-layout>
