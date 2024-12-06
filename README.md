@@ -1,4 +1,3 @@
-
 # Room Management System  
 
 The **Room Management System** is designed to simplify the process of managing and booking rooms with an intuitive and user-friendly interface. Below are the key features of the system:
@@ -26,7 +25,12 @@ This feature makes it simple to locate rooms equipped to meet specific requireme
 
 ---
 
-With these capabilities, the **Room Management System** is a reliable and efficient solution for managing room bookings and resources.
+## Deployment  
+
+This project is fully containerized using Docker. To run the application, you can use Docker Compose to set it up and build the containers.  
+
+With this setup, the system is easy to deploy and ready to use, offering a reliable and efficient solution for managing room bookings and resources.
+
 
 
 
