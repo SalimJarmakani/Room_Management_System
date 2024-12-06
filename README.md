@@ -1,3 +1,35 @@
+
+# Room Management System  
+
+The **Room Management System** is designed to simplify the process of managing and booking rooms with an intuitive and user-friendly interface. Below are the key features of the system:
+
+## Features  
+
+### 1. Create Rooms  
+Users can add new rooms to the system by specifying essential details such as:  
+- Room Name  
+- Capacity  
+- Available Amenities (e.g., Wi-Fi, Projector)  
+
+### 2. View Booked Room Dates on the Calendar  
+Easily visualize booked dates for each room using a built-in calendar feature. This helps users manage schedules efficiently and avoid conflicts.  
+
+### 3. Update Rooms  
+Modify room details seamlessly. Update attributes like capacity, amenities, or room descriptions to ensure all information remains accurate and up-to-date.  
+
+### 4. Search for Rooms by Amenities  
+Find the perfect room for your needs using a robust search functionality. Filter rooms based on key amenities such as:  
+- Wi-Fi  
+- Projector  
+
+This feature makes it simple to locate rooms equipped to meet specific requirements.  
+
+---
+
+With these capabilities, the **Room Management System** is a reliable and efficient solution for managing room bookings and resources.
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
