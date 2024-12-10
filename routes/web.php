@@ -27,10 +27,15 @@ Route::middleware(['auth'])->prefix('rooms')->group(function () {
     Route::get('/create', [RoomController::class, 'create'])->name('rooms.create');
     Route::post('/', [RoomController::class, 'store'])->name('rooms.store');
     Route::get('/search', [RoomController::class, 'search'])->name('rooms.search');
+    Route::get('/details/{room}', [RoomController::class, 'show'])->name('rooms.details');
+    Route::put('/{room}', [RoomController::class, 'update'])->name('rooms.update');
+    Route::get('/table', [RoomController::class, 'table'])->name('rooms.table');
+    Route::delete('/{id}', [RoomController::class, 'destroy'])->name('rooms.destroy');
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/book-room', [BookingController::class, 'showBookingForm'])->name('book-room.form');
     Route::post('/book-room', [BookingController::class, 'store'])->name('book-room.store');
+    Route::get('/bookings', [BookingController::class, 'employees'])->name('book.employees');
 });
 require __DIR__ . '/auth.php';

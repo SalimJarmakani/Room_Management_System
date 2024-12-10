@@ -8,4 +8,5 @@ interface BookingRepositoryInterface
     public function createBooking(array $data);
     public function updateBooking($bookingId, array $data);
     public function getBookingById($bookingId);
+    public function getAllBookingsWithEmployeeAndUser();
 }

@@ -54,6 +54,12 @@ class RoomController extends Controller
         return view('rooms.index', compact('rooms'));
     }
 
+    public function show($roomId)
+    {
+        $room = $this->roomRepository->getRoomById($roomId);
+        return view('rooms.details', compact('room'));
+    }
+
     public function create()
     {
         // Fetch all available amenities to populate the form
@@ -78,6 +84,12 @@ class RoomController extends Controller
 
 
         return view('rooms.calendar', ['events' => $events, 'bookings' => $bookings]);
+    }
+
+    public function table()
+    {
+        $rooms = $this->roomRepository->getAllRooms();
+        return view('rooms.table', compact('rooms'));
     }
 
     public function store(Request $request)
@@ -119,5 +131,31 @@ class RoomController extends Controller
 
 
         return view('rooms.search', compact('amenities', 'rooms'));
+    }
+
+    public function update(Request $request, $roomId)
+    {
+        $validated = $request->validate([
+            'room_name' => 'required|string|max:255',
+            'capacity' => 'required|integer|min:1',
+            'description' => 'nullable|string',
+        ]);
+
+        $this->roomRepository->updateRoom($roomId, $validated);
+
+        return redirect()->route('rooms.details', $roomId)->with('success', 'Room details updated successfully.');
+    }
+
+    /**
+     * Delete the specified room.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $this->roomRepository->deleteRoom($id);
+
+        return redirect()->route('rooms.index')->with('success', 'Room deleted successfully.');
     }
 }

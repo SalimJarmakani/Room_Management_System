@@ -29,6 +29,12 @@
                     <x-nav-link :href="route('rooms.search')" :active="request()->routeIs('/search')">
                         {{ __('Search Rooms') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('book.employees')" :active="request()->routeIs('/booking')">
+                        {{ __('Employee Bookings') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('rooms.table')" :active="request()->routeIs('/table')">
+                        {{ __('Room Table') }}
+                    </x-nav-link>
                 </div>
             </div>
 

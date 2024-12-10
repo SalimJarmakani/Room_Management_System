@@ -50,4 +50,10 @@ class BookingController extends Controller
             return redirect()->back()->withErrors(['error' => 'An error occurred: ' . $e->getMessage()]);
         }
     }
+
+    public function employees()
+    {
+        $bookings = $this->bookingRepository->getAllBookingsWithEmployeeAndUser();
+        return view('rooms.employees', compact('bookings'));
+    }
 }

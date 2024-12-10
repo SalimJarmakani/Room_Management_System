@@ -104,7 +104,7 @@ class RoomRepository implements RoomRepositoryInterface
      *
      * @param int $room_id
      * @param array $data
-     * @return \App\Models\Room
+     * @return Room
      */
     public function updateRoom($room_id, array $data)
     {

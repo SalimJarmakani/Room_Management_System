@@ -74,6 +74,12 @@ class BookingRepository implements BookingRepositoryInterface
         return $booking;
     }
 
+    public function getAllBookingsWithEmployeeAndUser()
+    {
+
+        return Booking::with(['employee.user'])->get();
+    }
+
     /**
      * Get a booking by ID.
      *
